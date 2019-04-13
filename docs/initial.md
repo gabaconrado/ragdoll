@@ -53,10 +53,10 @@ Based on the requisites, the architecture will probably be an Android app with c
 
 ```nomnoml
 [Finances|balance : real]
-[Towel|type: string;cost: real; amount: integer; price: real]
-[Client|name: string; adress: string; phone: string; email: string; balance: real; towels: integer]
+[Towel|type: string; amount: integer;available: integer]
+[Client|name: string; address: string; phone: string; email: string; balance: real| [Towel|towels:list; price: real]]
 [Sale|date: date; value: real|
-    [Client];[Towel|quantity_borrowed: integer; quantity_collected: integer; price: real]
+    [Client];[Towel|quantity_borrowed: integer; quantity_collected: integer]
 ]
 ```
 
