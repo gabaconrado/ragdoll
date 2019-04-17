@@ -1,3 +1,21 @@
 <resources>
+
+    <!-- General -->
     <string name="app_name">Ragdoll</string>
+
+    <!-- Activity Home -->
+    <string name="home_title">Home</string>
+
+    <!-- Activity Finances -->
+    <string name="finances_title">Finances</string>
+
+    <!-- Activity Management -->
+    <string name="data_management_title">Management</string>
+
+    <!-- Activity Sale execution -->
+    <string name="sale_execution_title">Sale</string>
+
+    <!-- Activity Explore -->
+    <string name="data_explore_title">Data</string>
+
 </resources>

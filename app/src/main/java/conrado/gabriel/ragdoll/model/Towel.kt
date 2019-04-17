@@ -2,7 +2,7 @@ package conrado.gabriel.ragdoll.model
 
 data class Towel(var type: String) {
 
-    var amount: Int = 0
+    private var amount: Int = 0
         set(value) {
             field = if (value < 0) 0 else value
         }
