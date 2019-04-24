@@ -8,11 +8,37 @@
         tools:context=".activity.HomeActivity">
 
     <include
-            layout="@layout/app_toolbar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_width="0dp"/>
+        android:id="@+id/toolbar_container"
+        layout="@layout/app_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="0dp" />
+
+    <LinearLayout
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:text="TextView"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"/>
+
+        <Button
+            android:text="Button"
+            android:layout_gravity="center|bottom"
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
