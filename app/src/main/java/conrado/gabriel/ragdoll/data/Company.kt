@@ -1,3 +1,3 @@
-package conrado.gabriel.ragdoll.model
+package conrado.gabriel.ragdoll.data
 
 data class Company(var name: String, var balance: Double)

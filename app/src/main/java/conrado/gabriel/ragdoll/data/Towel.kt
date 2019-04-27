@@ -1,4 +1,4 @@
-package conrado.gabriel.ragdoll.model
+package conrado.gabriel.ragdoll.data
 
 data class Towel(var type: String) {
 

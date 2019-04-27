@@ -17,18 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-                android:name=".activity.FinancesActivity"
-                android:label="@string/finances_title"/>
-        <activity
-                android:name=".activity.DataManagementActivity"
-                android:label="@string/data_management_title"/>
-        <activity
-                android:name=".activity.SaleActivity"
-                android:label="@string/sale_execution_title"/>
-        <activity
-                android:name=".activity.DataExploreActivity"
-                android:label="@string/data_explore_title"/>
     </application>
 
 </manifest>

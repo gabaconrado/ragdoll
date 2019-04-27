@@ -1,4 +1,4 @@
-package conrado.gabriel.ragdoll.model
+package conrado.gabriel.ragdoll.data
 
 import java.util.*
 
