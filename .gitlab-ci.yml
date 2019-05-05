@@ -23,14 +23,13 @@ before_script:
 
 stages:
   - build
-  - test
 
-lintDebug:
+code-lint:
   stage: build
   script:
     - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
 
-assembleDebug:
+build-debug-apk:
   stage: build
   only:
     refs:
