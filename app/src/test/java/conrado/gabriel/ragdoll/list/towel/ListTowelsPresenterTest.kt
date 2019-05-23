@@ -4,6 +4,7 @@ import conrado.gabriel.ragdoll.argumentCaptor
 import conrado.gabriel.ragdoll.capture
 import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource
+import conrado.gabriel.ragdoll.data.source.DataRepository
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -16,7 +17,7 @@ import org.mockito.MockitoAnnotations
 
 class ListTowelsPresenterTest {
 
-    @Mock private lateinit var dataSource: AbstractDataSource
+    @Mock private lateinit var dataRepository: DataRepository
 
     @Mock private lateinit var listTowelsView: ListTowelsContract.View
 
@@ -31,7 +32,7 @@ class ListTowelsPresenterTest {
 
         MockitoAnnotations.initMocks(this)
 
-        listTowelsPresenter = ListTowelsPresenter(dataSource, listTowelsView)
+        listTowelsPresenter = ListTowelsPresenter(dataRepository, listTowelsView)
 
         towels = mutableListOf(Towel("Fofinha"), Towel("Branquinha"), Towel("Limpinha"))
 
@@ -43,7 +44,7 @@ class ListTowelsPresenterTest {
     @Test
     fun createPresenter_bindToView(){
 
-        listTowelsPresenter = ListTowelsPresenter(dataSource, listTowelsView)
+        listTowelsPresenter = ListTowelsPresenter(dataRepository, listTowelsView)
 
         verify(listTowelsView).presenter = listTowelsPresenter
 
@@ -57,8 +58,8 @@ class ListTowelsPresenterTest {
 
         listTowelsPresenter.loadTowels(true)
 
-        verify(dataSource).getTowels(capture(loadTowelsCallbackCaptor))
-        loadTowelsCallbackCaptor.value.onTaskLoaded(towels)
+        verify(dataRepository).getTowels(capture(loadTowelsCallbackCaptor))
+        loadTowelsCallbackCaptor.value.onTowelsLoaded(towels)
 
         val inOrder = inOrder(listTowelsView)
         inOrder.verify(listTowelsView).setLoadingIndicator(true)
@@ -67,6 +68,21 @@ class ListTowelsPresenterTest {
         val showTowelArgumentCaptor = argumentCaptor<List<Towel>>()
         verify(listTowelsView).showTowels(capture(showTowelArgumentCaptor))
         assertTrue(showTowelArgumentCaptor.value.size == 3)
+
+    }
+
+    /**
+     * Check if loading empty list will show on screen
+     */
+    @Test
+    fun loadTowelsEmpty_showMessage(){
+
+        listTowelsPresenter.loadTowels(true)
+
+        verify(dataRepository).getTowels(capture(loadTowelsCallbackCaptor))
+        loadTowelsCallbackCaptor.value.onNoTowelsLoaded()
+
+        verify(listTowelsView).showNoTowels()
 
     }
 

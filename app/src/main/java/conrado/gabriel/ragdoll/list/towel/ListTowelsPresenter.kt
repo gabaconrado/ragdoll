@@ -4,7 +4,7 @@ import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource.LoadTowelsCallback
 
-class ListTowelsPresenter(val dataSource: AbstractDataSource, val listTowelsView: ListTowelsContract.View)
+class ListTowelsPresenter(val dataRepository: AbstractDataSource, val listTowelsView: ListTowelsContract.View)
     : ListTowelsContract.Presenter{
 
     private var firstLoad = true
@@ -26,13 +26,13 @@ class ListTowelsPresenter(val dataSource: AbstractDataSource, val listTowelsView
         if (showLoadUI)
             listTowelsView.setLoadingIndicator(true)
         if (refresh){
-            dataSource.getTowels(object : LoadTowelsCallback {
-                override fun onTaskLoaded(towels: List<Towel>) {
+            dataRepository.getTowels(object : LoadTowelsCallback {
+                override fun onTowelsLoaded(towels: List<Towel>) {
                     listTowelsView.setLoadingIndicator(false)
                     listTowelsView.showTowels(towels)
                 }
 
-                override fun onNoTasksLoaded() {
+                override fun onNoTowelsLoaded() {
                     listTowelsView.setLoadingIndicator(false)
                     listTowelsView.showNoTowels()
                 }

@@ -6,9 +6,9 @@ interface AbstractDataSource {
 
     interface LoadTowelsCallback {
 
-        fun onTaskLoaded(towels: List<Towel>)
+        fun onTowelsLoaded(towels: List<Towel>)
 
-        fun onNoTasksLoaded()
+        fun onNoTowelsLoaded()
 
     }
 
