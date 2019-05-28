@@ -7,21 +7,5 @@
             android:id="@+id/action_activity_home"
             android:title="@string/home_title"
             app:showAsAction="never"/>
-    <item
-            android:id="@+id/action_activity_finances"
-            android:title="@string/finances_title"
-            app:showAsAction="never"/>
-    <item
-            android:id="@+id/action_activity_management"
-            android:title="@string/data_management_title"
-            app:showAsAction="never"/>
-    <item
-            android:id="@+id/action_activity_sale"
-            android:title="@string/sale_execution_title"
-            app:showAsAction="never"/>
-    <item
-            android:id="@+id/action_activity_explore"
-            android:title="@string/data_explore_title"
-            app:showAsAction="never"/>
 
 </menu>

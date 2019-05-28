@@ -4,6 +4,6 @@ import conrado.gabriel.ragdoll.data.Towel
 
 object MemoryDatabase {
 
-    val towels: List<Towel> = mutableListOf()
+    val towels: MutableList<Towel> = mutableListOf()
 
 }
