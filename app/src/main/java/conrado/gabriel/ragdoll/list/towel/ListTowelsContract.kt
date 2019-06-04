@@ -26,7 +26,7 @@ interface ListTowelsContract {
 
     interface Presenter : BasePresenter {
 
-        fun loadTowels(refresh: Boolean)
+        fun loadTowels()
 
         fun newTowel()
 

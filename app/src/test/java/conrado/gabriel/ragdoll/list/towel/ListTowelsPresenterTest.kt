@@ -56,7 +56,7 @@ class ListTowelsPresenterTest {
     @Test
     fun loadTowelsFromDataSourceIntoView(){
 
-        listTowelsPresenter.loadTowels(true)
+        listTowelsPresenter.loadTowels()
 
         verify(dataRepository).getTowels(capture(loadTowelsCallbackCaptor))
         loadTowelsCallbackCaptor.value.onTowelsLoaded(towels)
@@ -77,7 +77,7 @@ class ListTowelsPresenterTest {
     @Test
     fun loadTowelsEmpty_showMessage(){
 
-        listTowelsPresenter.loadTowels(true)
+        listTowelsPresenter.loadTowels()
 
         verify(dataRepository).getTowels(capture(loadTowelsCallbackCaptor))
         loadTowelsCallbackCaptor.value.onNoTowelsLoaded()
