@@ -2,6 +2,7 @@ package conrado.gabriel.ragdoll.activity
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -33,6 +34,10 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
         beginTransaction().apply {
             action()
         }.commit()
+    }
+
+    fun showMessage(message: String){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
 }

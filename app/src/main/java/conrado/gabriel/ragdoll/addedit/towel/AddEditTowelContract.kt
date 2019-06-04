@@ -13,7 +13,7 @@ interface AddEditTowelContract {
 
         fun setType(type: String)
 
-        fun setAmount(amout: Int)
+        fun setAmount(amount: Int)
 
         fun setAvailable(available: Int)
 
@@ -21,7 +21,7 @@ interface AddEditTowelContract {
 
     interface Presenter: BasePresenter {
 
-        fun saveTowel(type:String, amount: Int, available: Int)
+        fun saveTowel(type:String, amount: String, available: String)
 
         fun populateTowel()
 

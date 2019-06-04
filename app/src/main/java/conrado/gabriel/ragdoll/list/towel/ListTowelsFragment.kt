@@ -1,5 +1,6 @@
 package conrado.gabriel.ragdoll.list.towel
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import conrado.gabriel.ragdoll.R
+import conrado.gabriel.ragdoll.activity.HomeActivity
+import conrado.gabriel.ragdoll.addedit.towel.AddEditTowelActivity
 import conrado.gabriel.ragdoll.data.Towel
 import kotlinx.android.synthetic.main.fragment_list_towels.*
 
@@ -48,12 +51,18 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View{
     }
 
     override fun showAddTowel() {
-        // TODO SHOW TOWEL ACTIVITY
+        val intent = Intent(context, AddEditTowelActivity::class.java)
+        startActivityForResult(intent, AddEditTowelActivity.REQUEST_ADD_TOWEL)
     }
 
     override fun showNoTowels() {
         tv_no_towels.visibility = View.VISIBLE
         rv_list_towels.visibility = View.GONE
+    }
+
+    override fun showAddEditSuccess() {
+        val parentActivity = (activity as HomeActivity?)
+        parentActivity?.showMessage(getString(R.string.success_add_edit))
     }
 
     companion object {

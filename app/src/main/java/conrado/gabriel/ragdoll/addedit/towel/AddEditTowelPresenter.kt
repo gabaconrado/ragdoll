@@ -17,10 +17,12 @@ class AddEditTowelPresenter(
         if (towelId != null) populateTowel()
     }
 
-    override fun saveTowel(type: String, amount: Int, available: Int) {
+    override fun saveTowel(type: String, amount: String, available: String) {
+        val amountInt = amount.toIntOrNull()
+        val availableInt = available.toIntOrNull()
         val newTowel = Towel(type).apply {
-            this.amount = amount
-            this.available = available
+            this.amount = amountInt ?: 0
+            this.available = availableInt ?: this.amount
         }
         if (newTowel.isInvalid){
             addEditTowelView.showInvalidTowelError()

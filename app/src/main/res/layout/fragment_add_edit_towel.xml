@@ -5,44 +5,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ProgressBar
-            android:id="@+id/pb_loading_towels"
+    <EditText
+            android:id="@+id/et_towel_type"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:autofillHints="@string/field_towel_type"
+            android:inputType="text"
+            android:hint="@string/field_towel_type"
     />
 
-    <TextView
-            android:id="@+id/tv_no_towels"
-            app:layout_constraintTop_toTopOf="parent"
+    <EditText
+            android:id="@+id/et_towel_amount"
+            app:layout_constraintTop_toBottomOf="@id/et_towel_type"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="@string/no_towels"
+            android:autofillHints="@string/field_towel_amount"
+            android:inputType="number"
+            android:hint="@string/field_towel_amount"
     />
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_list_towels"
-            app:layout_constraintTop_toTopOf="parent"
+    <EditText
+            android:id="@+id/et_towel_available"
+            app:layout_constraintTop_toBottomOf="@id/et_towel_amount"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="gone"
-    />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_new_towel"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/ic_add"
+            android:autofillHints="@string/field_towel_available"
+            android:inputType="number"
+            android:hint="@string/field_towel_available"
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
