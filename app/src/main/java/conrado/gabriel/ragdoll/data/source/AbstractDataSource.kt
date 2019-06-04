@@ -12,8 +12,18 @@ interface AbstractDataSource {
 
     }
 
+    interface GetTowelCallback {
+
+        fun onTowelLoaded(towel: Towel)
+
+        fun onNoTowelLoaded()
+
+    }
+
     fun getTowels(callback: LoadTowelsCallback)
 
     fun saveTowel(towel: Towel)
+
+    fun getTowel(towelId: String, callback: GetTowelCallback)
 
 }

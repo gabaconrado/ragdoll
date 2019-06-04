@@ -1,8 +1,12 @@
 package conrado.gabriel.ragdoll.data
 
-data class Towel(var type: String) {
+import java.util.*
 
-    private var amount: Int = 0
+data class Towel(var type: String = "") {
+
+    var id: String = UUID.randomUUID().toString()
+
+     var amount: Int = 0
         set(value) {
             field = if (value < 0) 0 else value
         }
@@ -11,5 +15,8 @@ data class Towel(var type: String) {
         set(value) {
             field = if (value > amount) amount else (if (value < 0) 0 else value)
         }
+
+    val isInvalid
+        get() = (amount == 0 || type == "")
 
 }

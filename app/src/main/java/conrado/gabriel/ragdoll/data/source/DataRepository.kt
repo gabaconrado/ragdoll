@@ -2,7 +2,11 @@ package conrado.gabriel.ragdoll.data.source
 
 import conrado.gabriel.ragdoll.data.Towel
 
-class DataRepository(val dataSource: AbstractDataSource) : AbstractDataSource{
+class DataRepository(private val dataSource: AbstractDataSource) : AbstractDataSource{
+
+    override fun getTowel(towelId: String, callback: AbstractDataSource.GetTowelCallback) {
+        dataSource.getTowel(towelId, callback)
+    }
 
     override fun getTowels(callback: AbstractDataSource.LoadTowelsCallback) {
         dataSource.getTowels(callback)
