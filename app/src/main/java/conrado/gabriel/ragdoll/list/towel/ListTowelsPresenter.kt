@@ -15,7 +15,7 @@ class ListTowelsPresenter(private val dataRepository: AbstractDataSource, val li
         listTowelsView.presenter = this
     }
 
-    override fun start() = loadTowels(false)
+    override fun start() = loadTowels(true)
 
     override fun loadTowels(refresh: Boolean) {
         loadTowels(refresh || firstLoad, true)
