@@ -22,7 +22,9 @@ class AddEditTowelPresenter(
         val availableInt = available.toIntOrNull()
         val newTowel = Towel(type).apply {
             this.amount = amountInt ?: 0
-            this.available = availableInt ?: this.amount
+            this.available = availableInt ?: 0
+            if (availableInt == null)
+                this.type = ""
         }
         if (newTowel.isInvalid){
             addEditTowelView.showInvalidTowelError()

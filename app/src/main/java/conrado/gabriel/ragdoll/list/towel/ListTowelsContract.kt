@@ -22,6 +22,8 @@ interface ListTowelsContract {
 
         fun showAddEditSuccess()
 
+        fun showRemoveSuccess()
+
     }
 
     interface Presenter : BasePresenter {
@@ -29,6 +31,8 @@ interface ListTowelsContract {
         fun loadTowels()
 
         fun newTowel()
+
+        fun removeTowels(towels: List<Towel>)
 
         fun result(requestCode: Int, resultCode: Int)
 

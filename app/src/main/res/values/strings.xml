@@ -9,12 +9,13 @@
     <!-- Data management Activity/Fragment -->
     <!-- Towels -->
     <string name="no_towels">No towels to show :(</string>
+    <string name="success_remove_towel">Towels removed successfuly</string>
+    <string name="success_add_edit_towel">Towel saved successfuly</string>
 
     <!-- AddEdit Activity/Fragment -->
     <string name="confirm_add_edit">Confirm</string>
     <!-- Towels -->
     <string name="invalid_towel_data">Invalid towel data</string>
-    <string name="success_add_edit">Towel saved successfuly</string>
 
     <!-- Models -->
     <!-- Towels -->

@@ -20,5 +20,12 @@ class MemoryDataSource(private val database: MemoryDatabase) : AbstractDataSourc
         database.towels.plusAssign(towel)
     }
 
+    override fun removeTowel(towelId: String) {
+        database.towels.removeIf { it.id == towelId }
+    }
+
+    override fun removeTowels(towels: List<Towel>) {
+        for (t in towels) removeTowel(t.id)
+    }
 
 }

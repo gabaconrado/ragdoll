@@ -98,4 +98,14 @@ class ListTowelsPresenterTest {
 
     }
 
+    @Test
+    fun removeTowel(){
+
+        val towels = mutableListOf(Towel("Limpinha"), Towel("Fofinha"))
+        listTowelsPresenter.removeTowels(towels)
+
+        verify(listTowelsView).showRemoveSuccess()
+
+    }
+
 }

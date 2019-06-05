@@ -26,4 +26,8 @@ interface AbstractDataSource {
 
     fun getTowel(towelId: String, callback: GetTowelCallback)
 
+    fun removeTowel(towelId: String)
+
+    fun removeTowels(towels: List<Towel>)
+
 }

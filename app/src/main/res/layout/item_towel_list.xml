@@ -8,6 +8,7 @@
             android:id="@+id/tv_item_towel_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/SelectableItemList"
     />
 
 </LinearLayout>

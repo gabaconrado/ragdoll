@@ -2,6 +2,7 @@ package conrado.gabriel.ragdoll.data.source
 
 import conrado.gabriel.ragdoll.any
 import conrado.gabriel.ragdoll.data.Towel
+import conrado.gabriel.ragdoll.eq
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -41,6 +42,31 @@ class DataRepositoryTest {
         val towel = Towel("Limpinha")
         dataRepository.saveTowel(towel)
         verify(dataSource).saveTowel(towel)
+    }
+
+    @Test
+    fun removeTowel(){
+        val towel = Towel("Limpinha")
+        dataRepository.saveTowel(towel)
+
+        dataRepository.removeTowel(towel.id)
+        verify(dataSource).removeTowel(eq(towel.id))
+
+    }
+
+    @Test
+    fun removeTowels(){
+
+        val towel1 = Towel("Limpinha")
+        val towel2 = Towel("Fofinha")
+        dataRepository.saveTowel(towel1)
+        dataRepository.saveTowel(towel2)
+
+        val towels = mutableListOf(towel1, towel2)
+
+        dataRepository.removeTowels(towels)
+        verify(dataSource).removeTowels(eq(towels))
+
     }
 
 }

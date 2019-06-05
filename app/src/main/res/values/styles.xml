@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Management Activity Widgets -->
+    <style name="SelectableItemList">
+        <item name="android:background">@drawable/selectable_item_list_background</item>
+    </style>
+
 </resources>

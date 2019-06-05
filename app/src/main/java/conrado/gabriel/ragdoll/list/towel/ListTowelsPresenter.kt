@@ -34,6 +34,12 @@ class ListTowelsPresenter(private val dataRepository: AbstractDataSource, val li
 
     override fun newTowel() = listTowelsView.showAddTowel()
 
+    override fun removeTowels(towels: List<Towel>) {
+        dataRepository.removeTowels(towels)
+        loadTowels()
+        listTowelsView.showRemoveSuccess()
+    }
+
     override fun result(requestCode: Int, resultCode: Int) {
         if (requestCode == AddEditTowelActivity.REQUEST_ADD_TOWEL
             && resultCode == Activity.RESULT_OK) {
