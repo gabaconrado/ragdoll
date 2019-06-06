@@ -3,25 +3,28 @@ package conrado.gabriel.ragdoll.list.towel
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.selection.*
+import androidx.recyclerview.selection.SelectionPredicates
+import androidx.recyclerview.selection.SelectionTracker
+import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import conrado.gabriel.ragdoll.R
 import conrado.gabriel.ragdoll.activity.HomeActivity
 import conrado.gabriel.ragdoll.addedit.towel.AddEditTowelActivity
+import conrado.gabriel.ragdoll.addedit.towel.AddEditTowelFragment
 import conrado.gabriel.ragdoll.data.Towel
+import conrado.gabriel.ragdoll.util.ItemListener
+import conrado.gabriel.ragdoll.util.RagdollDetailsLookup
+import conrado.gabriel.ragdoll.util.RagdollItemKeyProvider
+import conrado.gabriel.ragdoll.util.towel.TowelListAdapter
 import kotlinx.android.synthetic.main.fragment_list_towels.*
 
 
-class ListTowelsFragment : Fragment(), ListTowelsContract.View{
+class ListTowelsFragment : Fragment(), ListTowelsContract.View, ItemListener<Towel> {
 
-    private val towelListAdapter = TowelListAdapter(emptyList())
+    private val towelListAdapter = TowelListAdapter(emptyList(), this)
 
     override lateinit var presenter: ListTowelsContract.Presenter
 
@@ -51,19 +54,23 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View{
         presenter.start()
     }
 
+    override fun onItemClick(item: Towel) {
+        presenter.editTowel(item.id)
+    }
+
     override fun setLoadingIndicator(active: Boolean) {
         if (active) pb_loading_towels.visibility = View.VISIBLE else pb_loading_towels.visibility = View.GONE
     }
 
-    override fun showTowels(towel: List<Towel>) {
-        towelListAdapter.towels = towel
+    override fun showTowels(towels: List<Towel>) {
+        towelListAdapter.items = towels
         tv_no_towels.visibility = View.GONE
         rv_list_towels.visibility = View.VISIBLE
     }
 
     override fun showAddTowel() {
         val intent = Intent(context, AddEditTowelActivity::class.java)
-        startActivityForResult(intent, AddEditTowelActivity.REQUEST_ADD_TOWEL)
+        startActivityForResult(intent, AddEditTowelActivity.REQUEST_ADD_EDIT_TOWEL)
     }
 
     override fun showNoTowels() {
@@ -81,12 +88,23 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View{
         parentActivity?.showMessage(getString(R.string.success_remove_towel))
     }
 
+    override fun showEditTowel(taskId: String) {
+        val intent = Intent(context, AddEditTowelActivity::class.java).apply {
+            putExtra(AddEditTowelFragment.ARGUMENT_EDIT_TOWEL_ID, taskId)
+        }
+        startActivityForResult(intent, AddEditTowelActivity.REQUEST_ADD_EDIT_TOWEL)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        presenter.result(requestCode, resultCode)
+    }
+
     private fun createTowelTracker() : SelectionTracker<Long> {
         val selectionTracker = SelectionTracker.Builder<Long>(
             "TowelSelection",
             rv_list_towels,
-            TowelListAdapter.TowelItemKeyProvider(rv_list_towels),
-            TowelListAdapter.TowelDetailsLookup(rv_list_towels),
+            RagdollItemKeyProvider(rv_list_towels),
+            RagdollDetailsLookup(rv_list_towels),
             StorageStrategy.createLongStorage()
         ).withSelectionPredicate(
             SelectionPredicates.createSelectAnything()
@@ -121,7 +139,7 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View{
             val adapter = rv_list_towels?.adapter as TowelListAdapter
             // Build list
             for (index in towelSelectionTracker.selection) {
-                towels.plusAssign(adapter.towels[index.toInt()])
+                towels.plusAssign(adapter.items[index.toInt()])
             }
             towelSelectionTracker.clearSelection()
             presenter.removeTowels(towels)
@@ -135,87 +153,6 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View{
         const val STATE_ADD = 1
         const val STATE_REMOVE = 2
         fun newInstance() = ListTowelsFragment()
-    }
-
-    /**
-     * Adapter to hold the RecyclerView Towel items
-     */
-    class TowelListAdapter(towels: List<Towel>)
-        : RecyclerView.Adapter<TowelListAdapter.TowelListViewHolder>(){
-
-        init {
-            setHasStableIds(true)
-        }
-
-        var selectionTracker : SelectionTracker<Long>? = null
-
-        var towels: List<Towel> = towels
-            set(towels) {
-                field = towels
-                notifyDataSetChanged()
-            }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TowelListViewHolder {
-            val inflater = LayoutInflater.from(parent.context)
-            return TowelListViewHolder(inflater, parent)
-        }
-
-        override fun onBindViewHolder(holder: TowelListViewHolder, position: Int) {
-            selectionTracker?.let {
-                holder.bind(towels[position], it.isSelected(position.toLong()))
-            }
-        }
-
-
-        override fun getItemCount(): Int = towels.size
-
-        override fun getItemId(position: Int): Long = position.toLong()
-
-        inner class TowelListViewHolder(inflater: LayoutInflater, parent: ViewGroup)
-            : ViewHolder(inflater.inflate(R.layout.item_towel_list, parent, false)){
-
-            private var towelTitle: TextView? = null
-
-            init {
-                towelTitle = itemView.findViewById(R.id.tv_item_towel_title)
-            }
-
-            fun bind(towel: Towel, isActivated: Boolean){
-                towelTitle?.text = towel.type
-                towelTitle?.isActivated = isActivated
-            }
-
-            fun getItemDetails(): ItemDetailsLookup.ItemDetails<Long> = object
-                : ItemDetailsLookup.ItemDetails<Long>() {
-                    override fun getSelectionKey(): Long? = itemId
-                    override fun getPosition(): Int = adapterPosition
-            }
-
-        }
-
-        class TowelDetailsLookup(private val recyclerView: RecyclerView) : ItemDetailsLookup<Long>(){
-
-            override fun getItemDetails(e: MotionEvent): ItemDetails<Long>? {
-                val view = recyclerView.findChildViewUnder(e.x, e.y)
-                if (view != null) return (recyclerView.getChildViewHolder(view) as TowelListViewHolder).getItemDetails()
-                return null
-            }
-
-        }
-
-        class TowelItemKeyProvider(private val recyclerView: RecyclerView) :
-            ItemKeyProvider<Long>(SCOPE_MAPPED) {
-
-            override fun getKey(position: Int): Long? {
-                return recyclerView.adapter?.getItemId(position)
-            }
-
-            override fun getPosition(key: Long): Int {
-                val viewHolder = recyclerView.findViewHolderForItemId(key)
-                return viewHolder?.layoutPosition ?: RecyclerView.NO_POSITION
-            }
-        }
-
     }
 
 }

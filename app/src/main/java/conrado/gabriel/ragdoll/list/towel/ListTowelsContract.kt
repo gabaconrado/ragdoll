@@ -14,7 +14,7 @@ interface ListTowelsContract {
 
         fun setLoadingIndicator(active: Boolean)
 
-        fun showTowels(towel: List<Towel>)
+        fun showTowels(towels: List<Towel>)
 
         fun showNoTowels()
 
@@ -24,6 +24,8 @@ interface ListTowelsContract {
 
         fun showRemoveSuccess()
 
+        fun showEditTowel(taskId: String)
+
     }
 
     interface Presenter : BasePresenter {
@@ -31,6 +33,8 @@ interface ListTowelsContract {
         fun loadTowels()
 
         fun newTowel()
+
+        fun editTowel(taskId: String)
 
         fun removeTowels(towels: List<Towel>)
 

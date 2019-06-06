@@ -34,6 +34,8 @@ class ListTowelsPresenter(private val dataRepository: AbstractDataSource, val li
 
     override fun newTowel() = listTowelsView.showAddTowel()
 
+    override fun editTowel(taskId: String) = listTowelsView.showEditTowel(taskId)
+
     override fun removeTowels(towels: List<Towel>) {
         dataRepository.removeTowels(towels)
         loadTowels()
@@ -41,7 +43,7 @@ class ListTowelsPresenter(private val dataRepository: AbstractDataSource, val li
     }
 
     override fun result(requestCode: Int, resultCode: Int) {
-        if (requestCode == AddEditTowelActivity.REQUEST_ADD_TOWEL
+        if (requestCode == AddEditTowelActivity.REQUEST_ADD_EDIT_TOWEL
             && resultCode == Activity.RESULT_OK) {
             listTowelsView.showAddEditSuccess()
         }

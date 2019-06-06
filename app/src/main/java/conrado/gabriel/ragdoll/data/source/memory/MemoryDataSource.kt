@@ -7,7 +7,10 @@ class MemoryDataSource(private val database: MemoryDatabase) : AbstractDataSourc
 
     override fun getTowel(towelId: String, callback: AbstractDataSource.GetTowelCallback) {
         for (t in database.towels){
-            if (t.id == towelId) callback.onTowelLoaded(t)
+            if (t.id == towelId) {
+                callback.onTowelLoaded(t)
+                return
+            }
         }
         callback.onNoTowelLoaded()
     }

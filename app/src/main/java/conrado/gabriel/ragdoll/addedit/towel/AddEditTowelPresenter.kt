@@ -54,6 +54,7 @@ class AddEditTowelPresenter(
     override fun onNoTowelLoaded() {
         // Show empty towel error
         addEditTowelView.showInvalidTowelError()
+        addEditTowelView.showTowelsList()
     }
 
 }

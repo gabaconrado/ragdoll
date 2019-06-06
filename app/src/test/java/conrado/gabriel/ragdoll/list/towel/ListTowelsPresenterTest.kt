@@ -5,6 +5,7 @@ import conrado.gabriel.ragdoll.capture
 import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource
 import conrado.gabriel.ragdoll.data.source.DataRepository
+import conrado.gabriel.ragdoll.eq
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -105,6 +106,17 @@ class ListTowelsPresenterTest {
         listTowelsPresenter.removeTowels(towels)
 
         verify(listTowelsView).showRemoveSuccess()
+
+    }
+
+    @Test
+    fun editTowel(){
+
+        val towel = Towel("Limpinha")
+
+        listTowelsPresenter.editTowel(towel.id)
+
+        verify(listTowelsView).showEditTowel(eq(towel.id))
 
     }
 

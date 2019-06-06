@@ -160,6 +160,7 @@ class AddEditTowelPresenterTest{
         getTowelCallbackCaptor.value.onNoTowelLoaded()
 
         verify(addEditTowelView).showInvalidTowelError()
+        verify(addEditTowelView).showTowelsList()
 
     }
 

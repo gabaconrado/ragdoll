@@ -30,7 +30,7 @@ class AddEditTowelActivity : BaseActivity(layoutId = R.layout.activity_add_edit_
     }
 
     companion object {
-        const val REQUEST_ADD_TOWEL = 1
+        const val REQUEST_ADD_EDIT_TOWEL = 1
     }
 
 }
