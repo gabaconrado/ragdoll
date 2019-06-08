@@ -1,10 +1,10 @@
 package conrado.gabriel.ragdoll.management.list.towel
 
 import android.app.Activity
-import conrado.gabriel.ragdoll.management.addedit.towel.AddEditTowelActivity
 import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource.LoadTowelsCallback
+import conrado.gabriel.ragdoll.management.addedit.towel.AddEditTowelActivity
 
 class ListTowelsPresenter(private val dataRepository: AbstractDataSource, val listTowelsView: ListTowelsContract.View)
     : ListTowelsContract.Presenter{
@@ -39,13 +39,13 @@ class ListTowelsPresenter(private val dataRepository: AbstractDataSource, val li
     override fun removeTowels(towels: List<Towel>) {
         dataRepository.removeTowels(towels)
         loadTowels()
-        listTowelsView.showRemoveSuccess()
+        listTowelsView.showRemoveTowelSuccess()
     }
 
     override fun result(requestCode: Int, resultCode: Int) {
         if (requestCode == AddEditTowelActivity.REQUEST_ADD_EDIT_TOWEL
             && resultCode == Activity.RESULT_OK) {
-            listTowelsView.showAddEditSuccess()
+            listTowelsView.showAddEditTowelSuccess()
         }
 
     }

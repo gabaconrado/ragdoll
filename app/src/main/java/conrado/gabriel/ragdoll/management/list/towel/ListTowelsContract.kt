@@ -20,9 +20,9 @@ interface ListTowelsContract {
 
         fun showAddTowel()
 
-        fun showAddEditSuccess()
+        fun showAddEditTowelSuccess()
 
-        fun showRemoveSuccess()
+        fun showRemoveTowelSuccess()
 
         fun showEditTowel(taskId: String)
 

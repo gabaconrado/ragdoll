@@ -11,10 +11,10 @@ import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
 import conrado.gabriel.ragdoll.R
+import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.management.ManagementActivity
 import conrado.gabriel.ragdoll.management.addedit.towel.AddEditTowelActivity
 import conrado.gabriel.ragdoll.management.addedit.towel.AddEditTowelFragment
-import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.util.ItemListener
 import conrado.gabriel.ragdoll.util.RagdollDetailsLookup
 import conrado.gabriel.ragdoll.util.RagdollItemKeyProvider
@@ -78,12 +78,12 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View, ItemListener<Tow
         rv_list_towels.visibility = View.GONE
     }
 
-    override fun showAddEditSuccess() {
+    override fun showAddEditTowelSuccess() {
         val parentActivity = (activity as ManagementActivity?)
         parentActivity?.showMessage(getString(R.string.success_add_edit_towel))
     }
 
-    override fun showRemoveSuccess() {
+    override fun showRemoveTowelSuccess() {
         val parentActivity = (activity as ManagementActivity?)
         parentActivity?.showMessage(getString(R.string.success_remove_towel))
     }

@@ -107,7 +107,7 @@ class ListTowelsPresenterTest {
         val towels = mutableListOf(Towel("Limpinha"), Towel("Fofinha"))
         listTowelsPresenter.removeTowels(towels)
 
-        verify(listTowelsView).showRemoveSuccess()
+        verify(listTowelsView).showRemoveTowelSuccess()
 
     }
 
