@@ -1,7 +1,7 @@
-package conrado.gabriel.ragdoll.list.towel
+package conrado.gabriel.ragdoll.management.list.towel
 
 import android.app.Activity
-import conrado.gabriel.ragdoll.addedit.towel.AddEditTowelActivity
+import conrado.gabriel.ragdoll.management.addedit.towel.AddEditTowelActivity
 import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource.LoadTowelsCallback

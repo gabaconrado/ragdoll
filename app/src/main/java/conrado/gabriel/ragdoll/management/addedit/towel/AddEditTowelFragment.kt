@@ -1,4 +1,4 @@
-package conrado.gabriel.ragdoll.addedit.towel
+package conrado.gabriel.ragdoll.management.addedit.towel
 
 import android.app.Activity
 import android.os.Bundle

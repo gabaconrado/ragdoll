@@ -1,4 +1,4 @@
-package conrado.gabriel.ragdoll.addedit.towel
+package conrado.gabriel.ragdoll.management.addedit.towel
 
 import conrado.gabriel.ragdoll.any
 import conrado.gabriel.ragdoll.capture
@@ -31,7 +31,8 @@ class AddEditTowelPresenterTest{
     fun createPresenter_bindToView(){
 
         addEditTowelPresenter = AddEditTowelPresenter(
-            dataRepository, addEditTowelView, null)
+            dataRepository, addEditTowelView, null
+        )
 
         verify(addEditTowelView).presenter = addEditTowelPresenter
 

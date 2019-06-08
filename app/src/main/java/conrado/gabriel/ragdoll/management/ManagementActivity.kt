@@ -1,14 +1,15 @@
-package conrado.gabriel.ragdoll.activity
+package conrado.gabriel.ragdoll.management
 
 import android.os.Bundle
 import conrado.gabriel.ragdoll.R
+import conrado.gabriel.ragdoll.BaseActivity
 import conrado.gabriel.ragdoll.data.source.DataRepository
 import conrado.gabriel.ragdoll.data.source.memory.MemoryDataSource
 import conrado.gabriel.ragdoll.data.source.memory.MemoryDatabase
-import conrado.gabriel.ragdoll.list.towel.ListTowelsFragment
-import conrado.gabriel.ragdoll.list.towel.ListTowelsPresenter
+import conrado.gabriel.ragdoll.management.list.towel.ListTowelsFragment
+import conrado.gabriel.ragdoll.management.list.towel.ListTowelsPresenter
 
-class HomeActivity : BaseActivity(layoutId = R.layout.activity_home){
+class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management){
 
     private lateinit var listTowelsPresenter: ListTowelsPresenter
 
@@ -20,7 +21,11 @@ class HomeActivity : BaseActivity(layoutId = R.layout.activity_home){
             replaceFragmentInActivity(it, R.id.home_content_frame)
         }
 
-        listTowelsPresenter = ListTowelsPresenter(DataRepository(MemoryDataSource(MemoryDatabase)), fragment)
+        listTowelsPresenter = ListTowelsPresenter(
+            DataRepository(
+                MemoryDataSource(MemoryDatabase)
+            ), fragment
+        )
 
     }
 

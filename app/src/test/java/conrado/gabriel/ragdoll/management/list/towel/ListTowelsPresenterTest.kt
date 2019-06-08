@@ -1,4 +1,4 @@
-package conrado.gabriel.ragdoll.list.towel
+package conrado.gabriel.ragdoll.management.list.towel
 
 import conrado.gabriel.ragdoll.argumentCaptor
 import conrado.gabriel.ragdoll.capture
@@ -33,7 +33,8 @@ class ListTowelsPresenterTest {
 
         MockitoAnnotations.initMocks(this)
 
-        listTowelsPresenter = ListTowelsPresenter(dataRepository, listTowelsView)
+        listTowelsPresenter =
+            ListTowelsPresenter(dataRepository, listTowelsView)
 
         towels = mutableListOf(Towel("Fofinha"), Towel("Branquinha"), Towel("Limpinha"))
 
@@ -45,7 +46,8 @@ class ListTowelsPresenterTest {
     @Test
     fun createPresenter_bindToView(){
 
-        listTowelsPresenter = ListTowelsPresenter(dataRepository, listTowelsView)
+        listTowelsPresenter =
+            ListTowelsPresenter(dataRepository, listTowelsView)
 
         verify(listTowelsView).presenter = listTowelsPresenter
 

@@ -1,4 +1,4 @@
-package conrado.gabriel.ragdoll.addedit.towel
+package conrado.gabriel.ragdoll.management.addedit.towel
 
 import conrado.gabriel.ragdoll.BasePresenter
 import conrado.gabriel.ragdoll.BaseView

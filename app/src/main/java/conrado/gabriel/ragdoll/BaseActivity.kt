@@ -1,4 +1,4 @@
-package conrado.gabriel.ragdoll.activity
+package conrado.gabriel.ragdoll
 
 import android.os.Bundle
 import android.view.Menu
@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import conrado.gabriel.ragdoll.R
 import kotlinx.android.synthetic.main.app_toolbar.*
 
 abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {

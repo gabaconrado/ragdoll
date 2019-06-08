@@ -1,4 +1,4 @@
-package conrado.gabriel.ragdoll.list.towel
+package conrado.gabriel.ragdoll.management.list.towel
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,9 +11,9 @@ import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
 import conrado.gabriel.ragdoll.R
-import conrado.gabriel.ragdoll.activity.HomeActivity
-import conrado.gabriel.ragdoll.addedit.towel.AddEditTowelActivity
-import conrado.gabriel.ragdoll.addedit.towel.AddEditTowelFragment
+import conrado.gabriel.ragdoll.management.ManagementActivity
+import conrado.gabriel.ragdoll.management.addedit.towel.AddEditTowelActivity
+import conrado.gabriel.ragdoll.management.addedit.towel.AddEditTowelFragment
 import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.util.ItemListener
 import conrado.gabriel.ragdoll.util.RagdollDetailsLookup
@@ -79,12 +79,12 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View, ItemListener<Tow
     }
 
     override fun showAddEditSuccess() {
-        val parentActivity = (activity as HomeActivity?)
+        val parentActivity = (activity as ManagementActivity?)
         parentActivity?.showMessage(getString(R.string.success_add_edit_towel))
     }
 
     override fun showRemoveSuccess() {
-        val parentActivity = (activity as HomeActivity?)
+        val parentActivity = (activity as ManagementActivity?)
         parentActivity?.showMessage(getString(R.string.success_remove_towel))
     }
 
@@ -113,7 +113,9 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View, ItemListener<Tow
             object : SelectionTracker.SelectionObserver<Long>(){
                 override fun onSelectionChanged() {
                     val selectedCount = selectionTracker?.selection?.size() ?: 0
-                    if (selectedCount > 0) switchFab(STATE_REMOVE) else switchFab(STATE_ADD)
+                    if (selectedCount > 0) switchFab(STATE_REMOVE) else switchFab(
+                        STATE_ADD
+                    )
                 }
             }
         )

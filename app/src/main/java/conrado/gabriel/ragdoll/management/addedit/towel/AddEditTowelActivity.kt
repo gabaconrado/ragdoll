@@ -1,8 +1,8 @@
-package conrado.gabriel.ragdoll.addedit.towel
+package conrado.gabriel.ragdoll.management.addedit.towel
 
 import android.os.Bundle
 import conrado.gabriel.ragdoll.R
-import conrado.gabriel.ragdoll.activity.BaseActivity
+import conrado.gabriel.ragdoll.BaseActivity
 import conrado.gabriel.ragdoll.data.source.DataRepository
 import conrado.gabriel.ragdoll.data.source.memory.MemoryDataSource
 import conrado.gabriel.ragdoll.data.source.memory.MemoryDatabase
@@ -17,7 +17,9 @@ class AddEditTowelActivity : BaseActivity(layoutId = R.layout.activity_add_edit_
         val towelId = intent?.getStringExtra(AddEditTowelFragment.ARGUMENT_EDIT_TOWEL_ID)
 
         val fragment = supportFragmentManager.findFragmentById(R.id.add_edit_towel_content_frame)
-                as AddEditTowelFragment? ?: AddEditTowelFragment.newInstance(towelId).also {
+                as AddEditTowelFragment? ?: AddEditTowelFragment.newInstance(
+            towelId
+        ).also {
             replaceFragmentInActivity(it, R.id.add_edit_towel_content_frame)
         }
 
