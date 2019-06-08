@@ -23,9 +23,11 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    protected fun replaceFragmentInActivity(fragment: Fragment, @IdRes frameId: Int){
-        supportFragmentManager.transact {
-            replace(frameId, fragment)
+    protected fun replaceFragmentInActivity(fragment: Fragment?, @IdRes frameId: Int){
+        if (fragment != null) {
+            supportFragmentManager.transact {
+                replace(frameId, fragment)
+            }
         }
     }
 

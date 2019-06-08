@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/nav_towels"
+                android:checked="true"
+                android:title="@string/bot_nav_towels" />
+        <item
+                android:id="@+id/nav_clients"
+                android:title="@string/bot_nav_clients" />
+        <item
+                android:id="@+id/nav_finances"
+                android:title="@string/bot_nav_finances" />
+    </group>
+
+</menu>
