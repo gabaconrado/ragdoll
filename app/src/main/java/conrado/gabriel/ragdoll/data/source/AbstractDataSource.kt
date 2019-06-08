@@ -30,4 +30,6 @@ interface AbstractDataSource {
 
     fun removeTowels(towels: List<Towel>)
 
+    fun editTowel(towel: Towel)
+
 }

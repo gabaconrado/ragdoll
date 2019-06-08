@@ -65,11 +65,22 @@ class AddEditTowelPresenterTest{
         addEditTowelPresenter = AddEditTowelPresenter(
             dataRepository, addEditTowelView, null
         )
-        addEditTowelPresenter.saveTowel("Tipo 1", "1", "1")
+        addEditTowelPresenter.saveOrEditTowel("Tipo 1", "1", "1")
 
         verify(dataRepository).saveTowel(any())
         verify(addEditTowelView).showTowelsList()
 
+    }
+
+    @Test
+    fun editTowel(){
+        addEditTowelPresenter = AddEditTowelPresenter(
+            dataRepository, addEditTowelView, "123"
+        )
+        addEditTowelPresenter.saveOrEditTowel("Tipo 1", "1", "1")
+
+        verify(dataRepository).editTowel(any())
+        verify(addEditTowelView).showTowelsList()
     }
 
     @Test
@@ -80,7 +91,7 @@ class AddEditTowelPresenterTest{
         )
 
         // Invalid type
-        addEditTowelPresenter.saveTowel("", "10", "0")
+        addEditTowelPresenter.saveOrEditTowel("", "10", "0")
         verify(addEditTowelView).showInvalidTowelError()
 
     }
@@ -93,7 +104,7 @@ class AddEditTowelPresenterTest{
         )
 
         // Invalid type
-        addEditTowelPresenter.saveTowel("123", "0", "0")
+        addEditTowelPresenter.saveOrEditTowel("123", "0", "0")
         verify(addEditTowelView).showInvalidTowelError()
 
     }
@@ -106,7 +117,7 @@ class AddEditTowelPresenterTest{
         )
 
         // Invalid type
-        addEditTowelPresenter.saveTowel("123", "asd", "0")
+        addEditTowelPresenter.saveOrEditTowel("123", "asd", "0")
         verify(addEditTowelView).showInvalidTowelError()
 
     }
@@ -119,7 +130,7 @@ class AddEditTowelPresenterTest{
         )
 
         // Invalid type
-        addEditTowelPresenter.saveTowel("123", "123", "asd")
+        addEditTowelPresenter.saveOrEditTowel("123", "123", "asd")
         verify(addEditTowelView).showInvalidTowelError()
 
     }

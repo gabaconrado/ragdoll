@@ -17,7 +17,7 @@ class AddEditTowelPresenter(
         if (towelId != null) populateTowel()
     }
 
-    override fun saveTowel(type: String, amount: String, available: String) {
+    override fun saveOrEditTowel(type: String, amount: String, available: String) {
         val amountInt = amount.toIntOrNull()
         val availableInt = available.toIntOrNull()
         val newTowel = Towel(type).apply {
@@ -29,7 +29,13 @@ class AddEditTowelPresenter(
         if (newTowel.isInvalid){
             addEditTowelView.showInvalidTowelError()
         } else {
-            dataRepository.saveTowel(newTowel)
+            // Edit or save new towel depending on towel ID
+            if (towelId != null){
+                newTowel.id = towelId
+                dataRepository.editTowel(newTowel)
+            } else {
+                dataRepository.saveTowel(newTowel)
+            }
             addEditTowelView.showTowelsList()
         }
     }
@@ -56,5 +62,6 @@ class AddEditTowelPresenter(
         addEditTowelView.showInvalidTowelError()
         addEditTowelView.showTowelsList()
     }
+
 
 }

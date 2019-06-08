@@ -31,4 +31,14 @@ class MemoryDataSource(private val database: MemoryDatabase) : AbstractDataSourc
         for (t in towels) removeTowel(t.id)
     }
 
+    override fun editTowel(towel: Towel) {
+        for (t in database.towels){
+            if (t.id == towel.id){
+                t.type = towel.type
+                t.amount = towel.amount
+                t.available = towel.available
+            }
+        }
+    }
+
 }

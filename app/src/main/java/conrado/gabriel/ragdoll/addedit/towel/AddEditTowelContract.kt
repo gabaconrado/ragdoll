@@ -21,7 +21,7 @@ interface AddEditTowelContract {
 
     interface Presenter: BasePresenter {
 
-        fun saveTowel(type:String, amount: String, available: String)
+        fun saveOrEditTowel(type:String, amount: String, available: String)
 
         fun populateTowel()
 

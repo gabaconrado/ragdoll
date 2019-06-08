@@ -24,6 +24,10 @@ class DataRepository(private val dataSource: AbstractDataSource) : AbstractDataS
         dataSource.removeTowels(towels)
     }
 
+    override fun editTowel(towel: Towel){
+        dataSource.editTowel(towel)
+    }
+
     companion object {
 
         private var INSTANCE: DataRepository? = null

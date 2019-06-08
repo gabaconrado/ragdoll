@@ -22,7 +22,7 @@ class AddEditTowelFragment : Fragment(), AddEditTowelContract.View {
 
         activity?.findViewById<Button>(R.id.bt_confirm_add_edit_towel)?.apply {
             setOnClickListener {
-                presenter.saveTowel(
+                presenter.saveOrEditTowel(
                     et_towel_type.text.toString(),
                     et_towel_amount.text.toString(),
                     et_towel_available.text.toString()

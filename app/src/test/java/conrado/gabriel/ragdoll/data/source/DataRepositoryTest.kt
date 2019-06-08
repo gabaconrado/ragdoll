@@ -69,4 +69,22 @@ class DataRepositoryTest {
 
     }
 
+    @Test
+    fun editTowel(){
+
+        val towel = Towel("Limpinha")
+        dataRepository.saveTowel(towel)
+
+        val towelEdited = Towel().apply {
+            id = towel.id
+            type = "Fofinha"
+            amount = 0
+            available = 0
+        }
+
+        dataRepository.editTowel(towelEdited)
+        verify(dataSource).editTowel(eq(towelEdited))
+
+    }
+
 }
