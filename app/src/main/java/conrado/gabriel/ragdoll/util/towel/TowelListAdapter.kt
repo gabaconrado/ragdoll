@@ -6,7 +6,7 @@ import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.util.GenericListAdapter
 import conrado.gabriel.ragdoll.util.ItemListener
 
-class TowelListAdapter(towels: List<Towel>, var itemListener: ItemListener<Towel>)
+class TowelListAdapter(towels: List<Towel>, private var itemListener: ItemListener<Towel>)
     : GenericListAdapter<Towel, TowelViewHolder>(towels) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TowelViewHolder {
