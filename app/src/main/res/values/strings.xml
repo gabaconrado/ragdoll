@@ -15,10 +15,14 @@
     <string name="no_clients">No clients to show :(</string>
     <string name="success_remove_client">Clients removed successfuly</string>
     <string name="success_add_edit_client">Client saved successfuly</string>
+    <!-- Transactions -->
+    <string name="no_transactions">No transactions to show :(</string>
+    <string name="success_remove_transaction">Transactions removed successfuly</string>
+    <string name="success_add_edit_transaction">Transaction saved successfuly</string>
     <!-- Bottom Navigation Bar -->
     <string name="bot_nav_towels">Towels</string>
     <string name="bot_nav_clients">Clients</string>
-    <string name="bot_nav_finances">Finances</string>
+    <string name="bot_nav_transactions">Transactions</string>
 
     <!-- AddEdit Activity/Fragment -->
     <string name="confirm_add_edit">Confirm</string>
@@ -26,6 +30,8 @@
     <string name="invalid_towel_data">Invalid towel data</string>
     <!-- Clients -->
     <string name="invalid_client_data">Invalid client data</string>
+    <!-- Transactions -->
+    <string name="invalid_transaction_data">Invalid transaction data</string>
 
     <!-- Models -->
     <!-- Towels -->
@@ -39,6 +45,9 @@
     <string name="field_client_email">Email</string>
     <string name="field_client_towel_price">Towel Price</string>
     <string name="field_client_balance">Balance</string>
-    <string name="field_client_towels">Lista de toalhas</string>
+    <!-- Transactions -->
+    <string name="field_transaction_description">Description</string>
+    <string name="field_transaction_cost">Cost</string>
+    <string name="field_transaction_category">Category</string>
 
 </resources>

@@ -2,6 +2,7 @@ package conrado.gabriel.ragdoll.data.source.memory
 
 import conrado.gabriel.ragdoll.data.Client
 import conrado.gabriel.ragdoll.data.Towel
+import conrado.gabriel.ragdoll.data.Transaction
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource
 
 class MemoryDataSource(private val database: MemoryDatabase) : AbstractDataSource {
@@ -80,6 +81,47 @@ class MemoryDataSource(private val database: MemoryDatabase) : AbstractDataSourc
                 c.towelPrice = client.towelPrice
                 c.towels = client.towels
                 c.balance = client.balance
+            }
+        }
+    }
+
+    // Transactions
+    override fun getTransactions(callback: AbstractDataSource.LoadTransactionsCallback) {
+        if (database.transactions.isEmpty()) {
+            callback.onNoTransactionsLoaded()
+        } else {
+            callback.onTransactionsLoaded(database.transactions)
+        }
+    }
+
+    override fun saveTransaction(transaction: Transaction) {
+        database.transactions.plusAssign(transaction)
+    }
+
+    override fun getTransaction(transactionId: String, callback: AbstractDataSource.GetTransactionCallback) {
+        for (t in database.transactions) {
+            if (t.id == transactionId) {
+                callback.onTransactionLoaded(t)
+                return
+            }
+        }
+        callback.onNoTransactionLoaded()
+    }
+
+    override fun removeTransaction(transactionId: String) {
+        database.transactions.removeIf { it.id == transactionId }
+    }
+
+    override fun removeTransactions(transactions: List<Transaction>) {
+        for (t in transactions) removeTransaction(t.id)
+    }
+
+    override fun editTransaction(transaction: Transaction) {
+        for (t in database.transactions) {
+            if (t.id == transaction.id) {
+                t.description = transaction.description
+                t.cost = transaction.cost
+                t.category = transaction.category
             }
         }
     }

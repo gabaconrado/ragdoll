@@ -29,7 +29,7 @@ class AddEditClientActivity : BaseActivity(R.layout.activity_add_edit_client) {
     }
 
     companion object {
-        const val REQUEST_ADD_EDIT_CLIENT  = 1
+        const val REQUEST_ADD_EDIT_CLIENT = 1
     }
 
 }

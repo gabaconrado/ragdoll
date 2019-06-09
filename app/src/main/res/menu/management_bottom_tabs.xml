@@ -11,8 +11,8 @@
                 android:id="@+id/nav_clients"
                 android:title="@string/bot_nav_clients" />
         <item
-                android:id="@+id/nav_finances"
-                android:title="@string/bot_nav_finances" />
+                android:id="@+id/nav_transactions"
+                android:title="@string/bot_nav_transactions" />
     </group>
 
 </menu>

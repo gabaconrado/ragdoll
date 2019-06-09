@@ -22,6 +22,7 @@
                 android:name=".management.addedit.client.AddEditClientActivity"
                 android:windowSoftInputMode="adjustNothing"
         />
+        <activity android:name=".management.addedit.transaction.AddEditTransactionActivity"/>
     </application>
 
 </manifest>

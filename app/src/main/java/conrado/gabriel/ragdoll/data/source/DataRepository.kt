@@ -2,9 +2,9 @@ package conrado.gabriel.ragdoll.data.source
 
 import conrado.gabriel.ragdoll.data.Client
 import conrado.gabriel.ragdoll.data.Towel
+import conrado.gabriel.ragdoll.data.Transaction
 
 class DataRepository(private val dataSource: AbstractDataSource) : AbstractDataSource{
-
 
     // Towels
     override fun getTowel(towelId: String, callback: AbstractDataSource.GetTowelCallback) {
@@ -54,6 +54,32 @@ class DataRepository(private val dataSource: AbstractDataSource) : AbstractDataS
 
     override fun editClient(client: Client) {
         dataSource.editClient(client)
+    }
+
+    // Transactions
+
+    override fun getTransactions(callback: AbstractDataSource.LoadTransactionsCallback) {
+        dataSource.getTransactions(callback)
+    }
+
+    override fun saveTransaction(transaction: Transaction) {
+        dataSource.saveTransaction(transaction)
+    }
+
+    override fun getTransaction(transactionId: String, callback: AbstractDataSource.GetTransactionCallback) {
+        dataSource.getTransaction(transactionId, callback)
+    }
+
+    override fun removeTransaction(transactionId: String) {
+        dataSource.removeTransaction(transactionId)
+    }
+
+    override fun removeTransactions(transactions: List<Transaction>) {
+        dataSource.removeTransactions(transactions)
+    }
+
+    override fun editTransaction(transaction: Transaction) {
+        dataSource.editTransaction(transaction)
     }
 
     companion object {

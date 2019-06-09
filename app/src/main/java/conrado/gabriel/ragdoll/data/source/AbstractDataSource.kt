@@ -2,6 +2,7 @@ package conrado.gabriel.ragdoll.data.source
 
 import conrado.gabriel.ragdoll.data.Client
 import conrado.gabriel.ragdoll.data.Towel
+import conrado.gabriel.ragdoll.data.Transaction
 
 interface AbstractDataSource {
 
@@ -64,5 +65,35 @@ interface AbstractDataSource {
     fun removeClients(clients: List<Client>)
 
     fun editClient(client: Client)
+
+    // Finances
+
+    interface LoadTransactionsCallback {
+
+        fun onTransactionsLoaded(transactions: List<Transaction>)
+
+        fun onNoTransactionsLoaded()
+
+    }
+
+    interface GetTransactionCallback {
+
+        fun onTransactionLoaded(transaction: Transaction)
+
+        fun onNoTransactionLoaded()
+
+    }
+
+    fun getTransactions(callback: LoadTransactionsCallback)
+
+    fun saveTransaction(transaction: Transaction)
+
+    fun getTransaction(transactionId: String, callback: GetTransactionCallback)
+
+    fun removeTransaction(transactionId: String)
+
+    fun removeTransactions(transactions: List<Transaction>)
+
+    fun editTransaction(transaction: Transaction)
 
 }

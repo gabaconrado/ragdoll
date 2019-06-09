@@ -13,6 +13,8 @@ import conrado.gabriel.ragdoll.management.list.clients.ListClientsFragment
 import conrado.gabriel.ragdoll.management.list.clients.ListClientsPresenter
 import conrado.gabriel.ragdoll.management.list.towel.ListTowelsFragment
 import conrado.gabriel.ragdoll.management.list.towel.ListTowelsPresenter
+import conrado.gabriel.ragdoll.management.list.transactions.ListTransactionsFragment
+import conrado.gabriel.ragdoll.management.list.transactions.ListTransactionsPresenter
 import kotlinx.android.synthetic.main.activity_management.*
 
 
@@ -24,6 +26,9 @@ class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management)
 
     private lateinit var listClientsPresenter: ListClientsPresenter
     private lateinit var listClientsFragment: ListClientsFragment
+
+    private lateinit var listTransactionsPresenter: ListTransactionsPresenter
+    private lateinit var listTransactionsFragment: ListTransactionsFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -45,6 +50,9 @@ class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management)
             }
             R.id.nav_clients -> {
                 fragment = listClientsFragment
+            }
+            R.id.nav_transactions -> {
+                fragment = listTransactionsFragment
             }
             else -> {
                 fragment = listTowelsFragment
@@ -79,7 +87,13 @@ class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management)
             ), listClientsFragment
         )
 
-        // TODO: Finances
+        // Transactions
+        listTransactionsFragment = ListTransactionsFragment.newInstance()
+        listTransactionsPresenter = ListTransactionsPresenter(
+            DataRepository(
+                MemoryDataSource(MemoryDatabase)
+            ), listTransactionsFragment
+        )
     }
 
 }
