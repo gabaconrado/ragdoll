@@ -3,7 +3,6 @@ package conrado.gabriel.ragdoll.management.addedit.client
 import conrado.gabriel.ragdoll.BasePresenter
 import conrado.gabriel.ragdoll.BaseView
 import conrado.gabriel.ragdoll.data.Client
-import conrado.gabriel.ragdoll.data.Towel
 
 interface AddEditClientContract {
 
@@ -22,8 +21,6 @@ interface AddEditClientContract {
         fun setEmail(email: String)
 
         fun setTowelPrice(towelPrice: Double)
-
-        fun setTowels(towels: Map<Towel, Int>?)
 
         fun setBalance(balance: Double)
 

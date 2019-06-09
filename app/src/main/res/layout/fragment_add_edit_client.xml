@@ -77,6 +77,4 @@
             android:inputType="numberDecimal"
     />
 
-    <!-- TODO: TOWEL LIST -->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

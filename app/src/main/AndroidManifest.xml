@@ -18,7 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".management.addedit.towel.AddEditTowelActivity"/>
-        <activity android:name=".management.addedit.client.AddEditClientActivity"/>
+        <activity
+                android:name=".management.addedit.client.AddEditClientActivity"
+                android:windowSoftInputMode="adjustNothing"
+        />
     </application>
 
 </manifest>

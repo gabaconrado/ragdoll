@@ -48,7 +48,6 @@ class AddEditClientPresenter(
         addEditClientView.setEmail(client.email)
         addEditClientView.setTowelPrice(client.towelPrice)
         addEditClientView.setBalance(client.balance)
-        addEditClientView.setTowels(client.towels)
 
     }
 

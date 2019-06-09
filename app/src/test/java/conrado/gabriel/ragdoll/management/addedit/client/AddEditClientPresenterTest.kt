@@ -98,7 +98,6 @@ class AddEditClientPresenterTest {
         verify(addEditClientView).setEmail(sampleClient.email)
         verify(addEditClientView).setTowelPrice(sampleClient.towelPrice)
         verify(addEditClientView).setBalance(sampleClient.balance)
-        verify(addEditClientView).setTowels(sampleClient.towels)
 
     }
 

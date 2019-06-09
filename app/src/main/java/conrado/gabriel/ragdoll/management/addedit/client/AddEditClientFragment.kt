@@ -9,7 +9,6 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import conrado.gabriel.ragdoll.R
 import conrado.gabriel.ragdoll.data.Client
-import conrado.gabriel.ragdoll.data.Towel
 import kotlinx.android.synthetic.main.fragment_add_edit_client.*
 
 class AddEditClientFragment : Fragment(), AddEditClientContract.View {
@@ -27,6 +26,7 @@ class AddEditClientFragment : Fragment(), AddEditClientContract.View {
                 handleSaveClientClick()
             }
         }
+
     }
 
     override fun onResume() {
@@ -56,10 +56,6 @@ class AddEditClientFragment : Fragment(), AddEditClientContract.View {
 
     override fun setTowelPrice(towelPrice: Double) = et_client_towel_price.setText(towelPrice.toString())
 
-    override fun setTowels(towels: Map<Towel, Int>?) {
-        // TODO : Implement this somehow
-    }
-
     override fun setBalance(balance: Double) = et_client_balance.setText(balance.toString())
 
     private fun handleSaveClientClick() {
@@ -77,7 +73,6 @@ class AddEditClientFragment : Fragment(), AddEditClientContract.View {
             // Make client invalid if any number conversion went wrong
             if (towelPriceDouble == null || clientBalanceDouble == null)
                 name = ""
-            // TODO towel list
         }
 
         presenter.saveOrEditClient(client)
