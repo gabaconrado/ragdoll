@@ -24,7 +24,7 @@ interface ListTowelsContract {
 
         fun showRemoveTowelSuccess()
 
-        fun showEditTowel(taskId: String)
+        fun showEditTowel(towelId: String)
 
     }
 
@@ -34,7 +34,7 @@ interface ListTowelsContract {
 
         fun newTowel()
 
-        fun editTowel(taskId: String)
+        fun editTowel(towelId: String)
 
         fun removeTowels(towels: List<Towel>)
 

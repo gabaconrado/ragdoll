@@ -9,7 +9,7 @@ import conrado.gabriel.ragdoll.util.GenericViewHolder
 import conrado.gabriel.ragdoll.util.ItemListener
 
 class TowelViewHolder(inflater: LayoutInflater, parent: ViewGroup, itemListener: ItemListener<Towel>)
-    : GenericViewHolder<Towel>(inflater, parent){
+    : GenericViewHolder<Towel>(inflater, parent, R.layout.item_towel_list){
 
     private var towelTitle: TextView? = null
     private var itemListener : ItemListener<Towel>

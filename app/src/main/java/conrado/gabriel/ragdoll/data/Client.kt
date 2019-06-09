@@ -6,8 +6,11 @@ data class Client(var name: String, var address: String, var phone: String, var 
 
     var id: String = UUID.randomUUID().toString()
 
-    var towels: Collection<Towel>? = null
+    var towels: Map<Towel, Int>? = null
 
     var balance: Double = 0.0
+
+    val isInvalid
+        get() = (name == "" || address == "" || phone == "" || email == "" || towelPrice < 0.0)
 
 }

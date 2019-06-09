@@ -1,11 +1,13 @@
 package conrado.gabriel.ragdoll.management.list.towel
 
+import android.app.Activity
 import conrado.gabriel.ragdoll.argumentCaptor
 import conrado.gabriel.ragdoll.capture
 import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource
 import conrado.gabriel.ragdoll.data.source.DataRepository
 import conrado.gabriel.ragdoll.eq
+import conrado.gabriel.ragdoll.management.addedit.towel.AddEditTowelActivity
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -119,6 +121,15 @@ class ListTowelsPresenterTest {
         listTowelsPresenter.editTowel(towel.id)
 
         verify(listTowelsView).showEditTowel(eq(towel.id))
+
+    }
+
+    @Test
+    fun showTowelAddEditSuccessful(){
+
+        listTowelsPresenter.result(AddEditTowelActivity.REQUEST_ADD_EDIT_TOWEL, Activity.RESULT_OK)
+
+        verify(listTowelsView).showAddEditTowelSuccess()
 
     }
 

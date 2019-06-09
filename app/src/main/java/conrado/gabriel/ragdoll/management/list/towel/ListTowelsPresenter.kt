@@ -2,11 +2,11 @@ package conrado.gabriel.ragdoll.management.list.towel
 
 import android.app.Activity
 import conrado.gabriel.ragdoll.data.Towel
-import conrado.gabriel.ragdoll.data.source.AbstractDataSource
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource.LoadTowelsCallback
+import conrado.gabriel.ragdoll.data.source.DataRepository
 import conrado.gabriel.ragdoll.management.addedit.towel.AddEditTowelActivity
 
-class ListTowelsPresenter(private val dataRepository: AbstractDataSource, val listTowelsView: ListTowelsContract.View)
+class ListTowelsPresenter(private val dataRepository: DataRepository, val listTowelsView: ListTowelsContract.View)
     : ListTowelsContract.Presenter{
 
     init {
@@ -34,7 +34,7 @@ class ListTowelsPresenter(private val dataRepository: AbstractDataSource, val li
 
     override fun newTowel() = listTowelsView.showAddTowel()
 
-    override fun editTowel(taskId: String) = listTowelsView.showEditTowel(taskId)
+    override fun editTowel(towelId: String) = listTowelsView.showEditTowel(towelId)
 
     override fun removeTowels(towels: List<Towel>) {
         dataRepository.removeTowels(towels)

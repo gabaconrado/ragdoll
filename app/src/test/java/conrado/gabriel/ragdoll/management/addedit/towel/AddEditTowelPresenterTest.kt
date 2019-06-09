@@ -39,14 +39,20 @@ class AddEditTowelPresenterTest{
     }
 
     @Test
-    fun createPresenter_populateTask(){
+    fun createPresenter_populateTowel(){
 
-        val towelId = "1"
+        val towel = Towel("Toalhinha")
+
         addEditTowelPresenter = AddEditTowelPresenter(
-            dataRepository, addEditTowelView, towelId
+            dataRepository, addEditTowelView, towel.id
         )
         addEditTowelPresenter.populateTowel()
-        verify(dataRepository).getTowel(eq(towelId), capture(getTowelCallbackCaptor))
+        verify(dataRepository).getTowel(eq(towel.id), capture(getTowelCallbackCaptor))
+        getTowelCallbackCaptor.value.onTowelLoaded(towel)
+
+        verify(addEditTowelView).setType(towel.type)
+        verify(addEditTowelView).setAmount(towel.amount)
+        verify(addEditTowelView).setAvailable(towel.available)
 
     }
 

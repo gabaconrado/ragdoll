@@ -2,12 +2,15 @@ package conrado.gabriel.ragdoll.management
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import conrado.gabriel.ragdoll.BaseActivity
 import conrado.gabriel.ragdoll.R
 import conrado.gabriel.ragdoll.data.source.DataRepository
 import conrado.gabriel.ragdoll.data.source.memory.MemoryDataSource
 import conrado.gabriel.ragdoll.data.source.memory.MemoryDatabase
+import conrado.gabriel.ragdoll.management.list.clients.ListClientsFragment
+import conrado.gabriel.ragdoll.management.list.clients.ListClientsPresenter
 import conrado.gabriel.ragdoll.management.list.towel.ListTowelsFragment
 import conrado.gabriel.ragdoll.management.list.towel.ListTowelsPresenter
 import kotlinx.android.synthetic.main.activity_management.*
@@ -18,6 +21,9 @@ class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management)
 
     private lateinit var listTowelsPresenter: ListTowelsPresenter
     private lateinit var listTowelsFragment: ListTowelsFragment
+
+    private lateinit var listClientsPresenter: ListClientsPresenter
+    private lateinit var listClientsFragment: ListClientsFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -31,20 +37,21 @@ class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management)
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
+        val fragment: Fragment
+
         when(item.itemId) {
             R.id.nav_towels -> {
-                supportFragmentManager
-                    .findFragmentById(R.id.management_content_frame) as
-                        ListTowelsFragment? ?: ListTowelsFragment.newInstance().also {
-                    replaceFragmentInActivity(it, R.id.management_content_frame)
-                }
+                fragment = listTowelsFragment
+            }
+            R.id.nav_clients -> {
+                fragment = listClientsFragment
             }
             else -> {
-
+                fragment = listTowelsFragment
             }
         }
 
-
+        replaceFragmentInActivity(fragment, R.id.management_content_frame)
 
         return true
     }
@@ -64,7 +71,14 @@ class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management)
             ), listTowelsFragment
         )
 
-        // TODO: Clients
+        // Clients
+        listClientsFragment= ListClientsFragment.newInstance()
+        listClientsPresenter = ListClientsPresenter(
+            DataRepository(
+                MemoryDataSource(MemoryDatabase)
+            ), listClientsFragment
+        )
+
         // TODO: Finances
     }
 

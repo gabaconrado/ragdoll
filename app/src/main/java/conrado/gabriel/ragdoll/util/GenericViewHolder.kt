@@ -4,10 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.widget.RecyclerView
-import conrado.gabriel.ragdoll.R
 
-abstract class GenericViewHolder<T>(inflater: LayoutInflater, parent: ViewGroup)
-    : RecyclerView.ViewHolder(inflater.inflate(R.layout.item_towel_list, parent, false)) {
+abstract class GenericViewHolder<T>(inflater: LayoutInflater, parent: ViewGroup, layoutId: Int)
+    : RecyclerView.ViewHolder(inflater.inflate(layoutId, parent, false)) {
 
     abstract fun bind(item: T, isActivated: Boolean)
 

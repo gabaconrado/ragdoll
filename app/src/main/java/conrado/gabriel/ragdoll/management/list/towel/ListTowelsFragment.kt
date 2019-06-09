@@ -88,9 +88,9 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View, ItemListener<Tow
         parentActivity?.showMessage(getString(R.string.success_remove_towel))
     }
 
-    override fun showEditTowel(taskId: String) {
+    override fun showEditTowel(towelId: String) {
         val intent = Intent(context, AddEditTowelActivity::class.java).apply {
-            putExtra(AddEditTowelFragment.ARGUMENT_EDIT_TOWEL_ID, taskId)
+            putExtra(AddEditTowelFragment.ARGUMENT_EDIT_TOWEL_ID, towelId)
         }
         startActivityForResult(intent, AddEditTowelActivity.REQUEST_ADD_EDIT_TOWEL)
     }
@@ -113,9 +113,11 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View, ItemListener<Tow
             object : SelectionTracker.SelectionObserver<Long>(){
                 override fun onSelectionChanged() {
                     val selectedCount = selectionTracker?.selection?.size() ?: 0
-                    if (selectedCount > 0) switchFab(STATE_REMOVE) else switchFab(
-                        STATE_ADD
-                    )
+                    if (selectedCount > 0) {
+                        switchFab(STATE_REMOVE)
+                    } else {
+                        switchFab(STATE_ADD)
+                    }
                 }
             }
         )
@@ -145,6 +147,7 @@ class ListTowelsFragment : Fragment(), ListTowelsContract.View, ItemListener<Tow
             }
             towelSelectionTracker.clearSelection()
             presenter.removeTowels(towels)
+            adapter.notifyDataSetChanged()
         } else {
             presenter.newTowel()
         }

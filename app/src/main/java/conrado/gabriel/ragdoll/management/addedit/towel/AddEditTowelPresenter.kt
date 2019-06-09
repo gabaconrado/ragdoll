@@ -2,9 +2,10 @@ package conrado.gabriel.ragdoll.management.addedit.towel
 
 import conrado.gabriel.ragdoll.data.Towel
 import conrado.gabriel.ragdoll.data.source.AbstractDataSource
+import conrado.gabriel.ragdoll.data.source.DataRepository
 
 class AddEditTowelPresenter(
-    private val dataRepository: AbstractDataSource,
+    private val dataRepository: DataRepository,
     private val addEditTowelView: AddEditTowelContract.View,
     private val towelId: String?)
     : AddEditTowelContract.Presenter, AbstractDataSource.GetTowelCallback {
