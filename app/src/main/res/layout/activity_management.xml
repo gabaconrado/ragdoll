@@ -7,18 +7,9 @@
         android:layout_height="match_parent"
         tools:context=".management.ManagementActivity">
 
-    <include
-            layout="@layout/app_toolbar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="?attr/actionBarSize"
-    />
-
     <FrameLayout
             android:id="@+id/management_content_frame"
-            app:layout_constraintTop_toBottomOf="@id/app_toolbar"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/bnv_management_tabs"

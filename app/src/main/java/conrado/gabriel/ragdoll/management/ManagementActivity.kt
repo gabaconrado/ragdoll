@@ -42,20 +42,18 @@ class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management)
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
-        val fragment: Fragment
-
-        when(item.itemId) {
+        val fragment: Fragment = when(item.itemId) {
             R.id.nav_towels -> {
-                fragment = listTowelsFragment
+                listTowelsFragment
             }
             R.id.nav_clients -> {
-                fragment = listClientsFragment
+                listClientsFragment
             }
             R.id.nav_transactions -> {
-                fragment = listTransactionsFragment
+                listTransactionsFragment
             }
             else -> {
-                fragment = listTowelsFragment
+                listTowelsFragment
             }
         }
 

@@ -8,14 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import kotlinx.android.synthetic.main.app_toolbar.*
 
 abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
-        setSupportActionBar(app_toolbar)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
