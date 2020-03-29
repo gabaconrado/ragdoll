@@ -6,13 +6,20 @@
         <item
                 android:id="@+id/nav_towels"
                 android:checked="true"
-                android:title="@string/bot_nav_towels" />
+                android:title="@string/bot_nav_towels"
+                android:icon="@drawable/ic_grid"
+        />
+        <!--
+        TODO: MVP only with towels
         <item
                 android:id="@+id/nav_clients"
-                android:title="@string/bot_nav_clients" />
+                android:title="@string/bot_nav_clients"
+        />
         <item
                 android:id="@+id/nav_transactions"
-                android:title="@string/bot_nav_transactions" />
+                android:title="@string/bot_nav_transactions"
+        />
+        -->
     </group>
 
 </menu>
