@@ -47,7 +47,7 @@ class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management)
                 listTowelsFragment
             }
             /*
-            TODO: MVP only with clients
+            TODO: MVP only with towels
             R.id.nav_clients -> {
                 listClientsFragment
             }
