@@ -38,6 +38,9 @@
     <string name="field_towel_type">Type</string>
     <string name="field_towel_available">Available</string>
     <string name="field_towel_amount">Amount</string>
+    <string name="field_towel_type_as_label">Type:</string>
+    <string name="field_towel_available_as_label">Available:</string>
+    <string name="field_towel_amount_as_label">Amount:</string>
     <!-- Clients -->
     <string name="field_client_name">Name</string>
     <string name="field_client_address">Address</string>

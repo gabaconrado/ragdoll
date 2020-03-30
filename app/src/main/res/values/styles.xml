@@ -13,4 +13,8 @@
         <item name="android:background">@drawable/selectable_item_list_background</item>
     </style>
 
+    <style name="TransparentBackground">
+        <item name="android:background">#00000000</item>
+    </style>
+
 </resources>

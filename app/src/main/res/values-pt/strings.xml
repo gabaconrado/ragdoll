@@ -1,0 +1,57 @@
+<resources>
+
+    <!-- General -->
+    <string name="app_name">Ragdoll</string>
+
+    <!-- Activity Home -->
+    <string name="home_title">Tela inicial</string>
+
+    <!-- Data management Activity/Fragment -->
+    <!-- Towels -->
+    <string name="no_towels">Nenhuma toalha cadastrada ainda :(</string>
+    <string name="success_remove_towel">Toalha(s) removida(s) com sucesso!</string>
+    <string name="success_add_edit_towel">Toalha(s) salva(s) com sucesso!</string>
+    <!-- Clients -->
+    <string name="no_clients">Nenhum cliente cadastrado ainda :(</string>
+    <string name="success_remove_client">Cliente(s) removido(s) com sucesso!</string>
+    <string name="success_add_edit_client">Cliente(s) salvo(s) com sucesso!</string>
+    <!-- Transactions -->
+    <string name="no_transactions">Sem transações para mostrar :(</string>
+    <string name="success_remove_transaction">Transacão(ões) removida(s) com sucesso!</string>
+    <string name="success_add_edit_transaction">Transacão(ões) salva(s) com sucesso!</string>
+
+    <!-- Bottom Navigation Bar -->
+    <string name="bot_nav_towels">Toalhas</string>
+    <string name="bot_nav_clients">Clientes</string>
+    <string name="bot_nav_transactions">Transações</string>
+
+    <!-- AddEdit Activity/Fragment -->
+    <string name="confirm_add_edit">Confirmar</string>
+    <!-- Towels -->
+    <string name="invalid_towel_data">Dados inválidos de toalha</string>
+    <!-- Clients -->
+    <string name="invalid_client_data">Dados inválidos de cliente</string>
+    <!-- Transactions -->
+    <string name="invalid_transaction_data">Dados inválidos de transação</string>
+
+    <!-- Models -->
+    <!-- Towels -->
+    <string name="field_towel_type">Modelo</string>
+    <string name="field_towel_available">Disponível</string>
+    <string name="field_towel_amount">Quantidade</string>
+    <string name="field_towel_type_as_label">Modelo:</string>
+    <string name="field_towel_available_as_label">Disponível:</string>
+    <string name="field_towel_amount_as_label">Quantidade:</string>
+    <!-- Clients -->
+    <string name="field_client_name">Nome</string>
+    <string name="field_client_address">Endereço</string>
+    <string name="field_client_phone">Telefone</string>
+    <string name="field_client_email">Email</string>
+    <string name="field_client_towel_price">Preço por toalha</string>
+    <string name="field_client_balance">Saldo</string>
+    <!-- Transactions -->
+    <string name="field_transaction_description">Descrição</string>
+    <string name="field_transaction_cost">Custo</string>
+    <string name="field_transaction_category">Categoria</string>
+
+</resources>
