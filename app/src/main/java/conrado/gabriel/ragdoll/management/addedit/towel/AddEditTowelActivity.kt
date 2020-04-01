@@ -4,8 +4,8 @@ import android.os.Bundle
 import conrado.gabriel.ragdoll.R
 import conrado.gabriel.ragdoll.BaseActivity
 import conrado.gabriel.ragdoll.data.source.DataRepository
-import conrado.gabriel.ragdoll.data.source.memory.MemoryDataSource
-import conrado.gabriel.ragdoll.data.source.memory.MemoryDatabase
+import conrado.gabriel.ragdoll.data.source.room.RagdollDatabase
+import conrado.gabriel.ragdoll.data.source.room.RagdollDataSource
 
 class AddEditTowelActivity : BaseActivity(layoutId = R.layout.activity_add_edit_towel) {
 
@@ -24,7 +24,7 @@ class AddEditTowelActivity : BaseActivity(layoutId = R.layout.activity_add_edit_
         }
 
         addEditTowelPresenter = AddEditTowelPresenter(
-            DataRepository(MemoryDataSource(MemoryDatabase)),
+            DataRepository(RagdollDataSource(RagdollDatabase.getInstance(applicationContext))),
             fragment,
             towelId
         )

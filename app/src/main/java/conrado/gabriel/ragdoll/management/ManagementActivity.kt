@@ -7,8 +7,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import conrado.gabriel.ragdoll.BaseActivity
 import conrado.gabriel.ragdoll.R
 import conrado.gabriel.ragdoll.data.source.DataRepository
-import conrado.gabriel.ragdoll.data.source.memory.MemoryDataSource
-import conrado.gabriel.ragdoll.data.source.memory.MemoryDatabase
+import conrado.gabriel.ragdoll.data.source.room.RagdollDatabase
+import conrado.gabriel.ragdoll.data.source.room.RagdollDataSource
 import conrado.gabriel.ragdoll.management.list.clients.ListClientsFragment
 import conrado.gabriel.ragdoll.management.list.clients.ListClientsPresenter
 import conrado.gabriel.ragdoll.management.list.towel.ListTowelsFragment
@@ -76,11 +76,11 @@ class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management)
         listTowelsFragment = ListTowelsFragment.newInstance()
         listTowelsPresenter = ListTowelsPresenter(
             DataRepository(
-                MemoryDataSource(MemoryDatabase)
+                RagdollDataSource(RagdollDatabase.getInstance(applicationContext))
             ), listTowelsFragment
         )
 
-        // Clients
+        /* TODO: Only towels for MVP
         listClientsFragment= ListClientsFragment.newInstance()
         listClientsPresenter = ListClientsPresenter(
             DataRepository(
@@ -95,6 +95,7 @@ class ManagementActivity : BaseActivity(layoutId = R.layout.activity_management)
                 MemoryDataSource(MemoryDatabase)
             ), listTransactionsFragment
         )
+        */
     }
 
 }

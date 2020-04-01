@@ -1,9 +1,13 @@
 package conrado.gabriel.ragdoll.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
+@Entity
 data class Towel(var type: String = "") {
 
+    @PrimaryKey
     var id: String = UUID.randomUUID().toString()
 
      var amount: Int = 0
